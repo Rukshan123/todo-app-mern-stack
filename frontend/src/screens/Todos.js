@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import MainScreen from '../components/MainScreen/MainScreen'
 import { Link } from 'react-router-dom'
-import data from '../data/data'
+import axios from 'axios'
 
 export default function Todos() {
+  const [todos, setTodos] = useState([])
+
   const deleteTodo = (id) => {
     if (window.confirm('Are you sure...?')) {
     }
   }
+
+  const fetchTodos = async () => {
+    const { data } = await axios.get('/api/todos')
+    setTodos(data)
+  }
+
+  useEffect(() => {
+    fetchTodos()
+  }, [])
+
   return (
     <div>
       <MainScreen title='Welcome'>
@@ -18,9 +30,9 @@ export default function Todos() {
           </Button>
         </Link>
 
-        {data.map((todo) => (
-          <Card>
-            <Card.Header style={{ display: 'flex', padding: 10 }}>
+        {todos.map((todo) => (
+          <Card key={todo._id} style={{ margin: 10 }}>
+            <Card.Header style={{ display: 'flex' }}>
               <span
                 style={{
                   color: 'black',
