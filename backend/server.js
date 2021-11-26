@@ -1,8 +1,10 @@
 const express = require('express')
 const data = require('./data.js')
-
+const connectDB = require('./db/db.js')
+require('dotenv').config()
 const app = express()
 const port = 5000
+connectDB()
 
 app.get('/', (req, res) => {
   res.send('Server is ready')
