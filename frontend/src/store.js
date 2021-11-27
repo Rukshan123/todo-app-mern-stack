@@ -1,10 +1,18 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { todoReducer } from './reducers/todoReducers'
+import {
+  todoCreateReducer,
+  todoDeleteReducer,
+  todoReducer,
+  todoUpdateReducer,
+} from './reducers/todoReducers'
 
 const reducer = combineReducers({
   //reducers list
   todoList: todoReducer,
+  todoCreate: todoCreateReducer,
+  todoUpdate: todoUpdateReducer,
+  todoDelete: todoDeleteReducer,
 })
 
 const initialState = {}
