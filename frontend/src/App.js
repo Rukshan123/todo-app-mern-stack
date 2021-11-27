@@ -1,5 +1,4 @@
 import './App.css'
-import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Todos from './screens/Todos.js'
@@ -16,7 +15,6 @@ function App() {
           </Routes>
         </main>
       </Container>
-      <Footer />
     </BrowserRouter>
   )
 }
